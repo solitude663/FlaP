@@ -14,17 +14,20 @@ Include this where you want to use it, however only define `FLAP_IMPLEMENTATION`
 
 
 #+begin_src c
+  #include <stdio.h>
 
   int main(int argc, char** argv)
   {
       int* exampleInt = FlapInt("i", "example-int", "An example integer flag");
-      char** exampleStr = FlapInt("s", "example-string", "An example string flag");
+      char** exampleStr = FlapString("s", "example-string", "An example string flag");
 
       FlapParse(argc, argv);
 
       printf("Int: %d\n", *exampleInt);
       printf("Str: %s\n", *exampleStr);
 
+      ...
+	
       return 0;
   }
 
