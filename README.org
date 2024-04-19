@@ -1,0 +1,31 @@
+#+TITLE: Flap (Flag Parser)
+#+AUTHOR: Anthony Brown (@solitude663)
+
+
+STB-style flag parsing library in C inspired by [[https://github.com/golang/go/blob/master/src/flag/flag.go][Golang Flag Parsing]].
+
+
+** Usage
+Include this where you want to use it, however only define `FLAP_IMPLEMENTATION` once.
+#+begin_src c
+  #define FLAP_IMPLEMENTATION
+  #include "flap.h"
+#+end_src
+
+
+#+begin_src c
+
+  int main(int argc, char** argv)
+  {
+      int* exampleInt = FlapInt("i", "example-int", "An example integer flag");
+      char** exampleStr = FlapInt("s", "example-string", "An example string flag");
+
+      FlapParse(argc, argv);
+
+      printf("Int: %d\n", *exampleInt);
+      printf("Str: %s\n", *exampleStr);
+
+      return 0;
+  }
+
+#+end_src
