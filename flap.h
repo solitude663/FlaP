@@ -42,9 +42,9 @@ int*	FlapInt(char* shortName, char* longName, char* description, int defaultVal)
 char**	FlapString(char* shortName, char* longName, char* description, char* defaultVal);
 int*	FlapBool(char* shortName, char* longName, char* description, int defaultVal);
 
-void	FlapIntVal(int* ptr, char* shortName, char* longName, char* description, int defaultVal);
-char**	FlapStringVal(char** ptr, char* shortName, char* longName, char* description, char* defaultVal);
-int*	FlapBoolVal(int* ptr, char* shortName, char* longName, char* description, int defaultVal);
+void FlapIntVal(int* ptr, char* shortName, char* longName, char* description, int defaultVal);
+void FlapStringVal(char** ptr, char* shortName, char* longName, char* description, char* defaultVal);
+void FlapBoolVal(int* ptr, char* shortName, char* longName, char* description, int defaultVal);
 
 int FlapParse(int flagCount, char** flags);
 
@@ -93,7 +93,7 @@ char** FlapString(char* shortName, char* longName, char* description, char* defa
 	return (char**)&arg->Val;
 }
 
-char** FlapStringVal(char** ptr, char* shortName, char* longName, char* description, char* defaultVal)
+void FlapStringVal(char** ptr, char* shortName, char* longName, char* description, char* defaultVal)
 {
 	FlapArg* arg = FlapNewArg(Flap_Str, shortName, longName, description);
 	arg->IsPtr = 1;
@@ -108,7 +108,7 @@ int* FlapBool(char* shortName, char* longName, char* description, int defaultVal
 	return (int*)&arg->Val;
 }
 
-int* FlapBoolVal(int* ptr, char* shortName, char* longName, char* description, int defaultVal)
+void FlapBoolVal(int* ptr, char* shortName, char* longName, char* description, int defaultVal)
 {
 	FlapArg* arg = FlapNewArg(Flap_Bool, shortName, longName, description);
 	arg->IsPtr = 1;
